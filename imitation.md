@@ -17,6 +17,17 @@ Inspiration:
 - Explore the justice system in our AI-integrated world
 - Consider the implications of AI predicting and preventing negative behaviors
 
+```mermaid
+graph TD
+    AI[Predictive AI] --> |Prevents| Crime
+    AI --> |Reduces| Privacy
+    AI --> |Optimizes| Society
+    AI --> |Challenges| FreeWill[Free Will]
+    Society --> |Trades| Privacy
+    Society --> |Gains| Security
+    Society --> |Gains| Efficiency
+```
+
 ## 2. "The Matrix" (Film series)
 
 Similarities:
