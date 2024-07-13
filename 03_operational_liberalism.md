@@ -2,4 +2,4 @@
 
 
 ```
-[Previous: Slide Title](previous_slide.md) | [Next: Slide Title](next_slide.md)
+[Previous: Slide Title](02_symbolic_conservatism.md) | [Next: Slide Title](04_paradox.md)
