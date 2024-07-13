@@ -6,4 +6,4 @@ graph TD
     A --> E[Cultural Preservation]
     A --> F[Ethical AI]
 ```
-[Previous: Slide Title](01_introduction.md) | [Next: Slide Title](03_operational_liberalism.md)
+[Previous: Introduction](01_introduction.md) | [Next: Operational Liberalism](03_operational_liberalism.md)
