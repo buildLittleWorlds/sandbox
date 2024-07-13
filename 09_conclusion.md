@@ -2,4 +2,4 @@
 
 
 ```
-[Previous: Slide Title](previous_slide.md) | [Home: Slide Title](00_index.md)
+[Previous: Navigating Dichotomy](08_navigating_dichotomy.md) | [Home](00_index.md)
