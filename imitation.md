@@ -42,6 +42,16 @@ Inspiration:
 - Examine the potential for virtual or augmented realities in our AI-integrated world
 - Explore philosophical questions about the nature of choice in an optimized society
 
+```mermaid
+graph TD
+    AI[AI/Machines] --> |Controls| VirtualReality[Virtual Reality]
+    AI --> |Harvests Energy from| Humans
+    Humans --> |Unknowingly Live in| VirtualReality
+    Humans --> |Question| Reality
+    Humans --> |Struggle for| FreeWill[Free Will]
+    VirtualReality --> |Simulates| PhysicalWorld[Physical World]
+```
+
 ## 3. "Black Mirror" (TV series, especially the episode "Nosedive")
 
 Similarities:
