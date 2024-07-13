@@ -2,4 +2,4 @@
 
 
 ```
-[Previous: Slide Title](02_symbolic_conservatism.md) | [Next: Slide Title](04_paradox.md)
+[Previous: Symbolic Conservatism](02_symbolic_conservatism.md) | [Next: Paradox](04_paradox.md)
