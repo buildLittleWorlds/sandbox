@@ -11,4 +11,4 @@ graph TD
     D --> F[Tension]
     E --> F
 ```
-[Previous: Slide Title](00_index.md) | [Next: Slide Title](next_slide.md)
+[Previous: Slide Title](00_index.md) | [Next: Slide Title](02_symbolic_conservatism.md)
