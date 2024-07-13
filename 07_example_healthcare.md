@@ -2,4 +2,4 @@
 
 
 ```
-[Previous: Slide Title](previous_slide.md) | [Next: Slide Title](next_slide.md)
+[Previous: Example - Education](06_example_education.md) | [Next: Navigating Dichotomy](08_navigating_dichotomy.md)
