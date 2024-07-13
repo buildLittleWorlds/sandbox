@@ -1,1 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Omelas D3.js Diagram</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        .links line {
+            stroke: #999;
+            stroke-opacity: 0.6;
+        }
+        .nodes circle {
+            stroke: #fff;
+            stroke-width: 1.5px;
+        }
+        .node-labels {
+            font-family: sans-serif;
+            font-size: 10px;
+        }
+    </style>
+</head>
+<body>
+    <svg width="800" height="600"></svg>
+    <script>
+        const svg = d3.select("svg"),
+            width = +svg.attr("width"),
+            height = +svg.attr("height");
 
+        const color = d3.scaleOrdinal(d3.schemeCategory10);
+
+        const simulation = d3.forceSimulation()
+            .force("link", d3.forceLink().id(d => d.id))
+            .force("charge", d3.forceManyBody())
+            .force("center", d3.forceCenter(width / 2, height / 2));
+
+        const graph = {
+            "nodes": [
+                {"id": "Omelas", "group": 1},
+                {"id": "Happiness", "group": 1},
+                {"id": "Child", "group": 2},
+                {"id": "Suffering", "group": 2},
+                {"id": "Citizens", "group": 3},
+                {"id": "Knowledge", "group": 3},
+                {"id": "Stay", "group": 4},
+                {"id": "Walk Away", "group": 4}
+            ],
+            "links": [
+                {"source": "Omelas", "target": "Happiness", "value": 1},
+                {"source": "Omelas", "target": "Child", "value": 1},
+                {"source": "Child", "target": "Suffering", "value": 1},
+                {"source": "Happiness", "target": "Citizens", "value": 1},
+                {"source": "Citizens", "target": "Knowledge", "value": 1},
+                {"source": "Knowledge", "target": "Stay", "value": 1},
+                {"source": "Knowledge", "target": "Walk Away", "value": 1},
+                {"source": "Child", "target": "Happiness", "value": 2, "dashed": true},
+                {"source": "Suffering", "target": "Happiness", "value": 2, "dashed": true}
+            ]
+        };
+
+        const link = svg.append("g")
+            .attr("class", "links")
+            .selectAll("line")
+            .data(graph.links)
+            .enter().append("line")
+            .attr("stroke-width", d => Math.sqrt(d.value))
+            .style("stroke-dasharray", d => d.dashed ? "5,5" : "none");
+
+        const node = svg.append("g")
+            .attr("class", "nodes")
+            .selectAll("circle")
+            .data(graph.nodes)
+            .enter().append("circle")
+            .attr("r", 5)
+            .attr("fill", d => color(d.group))
+            .call(d3.drag()
+                .on("start", dragstarted)
+                .on("drag", dragged)
+                .on("end", dragended));
+
+        const label = svg.append("g")
+            .attr("class", "node-labels")
+            .selectAll("text")
+            .data(graph.nodes)
+            .enter().append("text")
+            .text(d => d.id)
+            .attr('x', 6)
+            .attr('y', 3);
+
+        node.append("title")
+            .text(d => d.id);
+
+        simulation
+            .nodes(graph.nodes)
+            .on("tick", ticked);
+
+        simulation.force("link")
+            .links(graph.links);
+
+        function ticked() {
+            link
+                .attr("x1", d => d.source.x)
+                .attr("y1", d => d.source.y)
+                .attr("x2", d => d.target.x)
+                .attr("y2", d => d.target.y);
+
+            node
+                .attr("cx", d => d.x)
+                .attr("cy", d => d.y);
+
+            label
+                .attr("x", d => d.x)
+                .attr("y", d => d.y);
+        }
+
+        function dragstarted(event) {
+            if (!event.active) simulation.alphaTarget(0.3).restart();
+            event.subject.fx = event.subject.x;
+            event.subject.fy = event.subject.y;
+        }
+
+        function dragged(event) {
+            event.subject.fx = event.x;
+            event.subject.fy = event.y;
+        }
+
+        function dragended(event) {
+            if (!event.active) simulation.alphaTarget(0);
+            event.subject.fx = null;
+            event.subject.fy = null;
+        }
+    </script>
+</body>
+</html>
